@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>gui.CSVTableController</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="gui-module.html">Package&nbsp;gui</a> ::
+        Module&nbsp;CSVTableController
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="gui.CSVTableController-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="gui.CSVTableController-module.html">Module gui.CSVTableController</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">    Contains an AbstractTableController implementing class</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring">for *.CSV files tables</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">sys</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">PyQt4</tt> <tt class="py-keyword">import</tt> <tt class="py-name">QtCore</tt><tt class="py-op">,</tt> <tt class="py-name">QtGui</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package gui=gui-module.html"><a title="gui" class="py-name" href="#" onclick="return doclink('link-0', 'gui', 'link-0');">gui</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module gui.AbstractTableController=gui.AbstractTableController-module.html,Class gui.AbstractTableController.AbstractTableController=gui.AbstractTableController.AbstractTableController-class.html"><a title="gui.AbstractTableController
+gui.AbstractTableController.AbstractTableController" class="py-name" href="#" onclick="return doclink('link-1', 'AbstractTableController', 'link-1');">AbstractTableController</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name"><a title="gui.AbstractTableController
+gui.AbstractTableController.AbstractTableController" class="py-name" href="#" onclick="return doclink('link-2', 'AbstractTableController', 'link-1');">AbstractTableController</a></tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name"><a title="gui" class="py-name" href="#" onclick="return doclink('link-3', 'gui', 'link-0');">gui</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Module gui.MainWindow=gui.MainWindow-module.html,Class gui.MainWindow.MainWindow=gui.MainWindow.MainWindow-class.html"><a title="gui.MainWindow
+gui.MainWindow.MainWindow" class="py-name" href="#" onclick="return doclink('link-4', 'MainWindow', 'link-4');">MainWindow</a></tt> <tt class="py-keyword">import</tt> <tt id="link-5" class="py-name"><a title="gui.MainWindow
+gui.MainWindow.MainWindow" class="py-name" href="#" onclick="return doclink('link-5', 'MainWindow', 'link-4');">MainWindow</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-6" class="py-name"><a title="gui" class="py-name" href="#" onclick="return doclink('link-6', 'gui', 'link-0');">gui</a></tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Module gui.LoginDialog=gui.LoginDialog-module.html,Class gui.LoginDialog.LoginDialog=gui.LoginDialog.LoginDialog-class.html"><a title="gui.LoginDialog
+gui.LoginDialog.LoginDialog" class="py-name" href="#" onclick="return doclink('link-7', 'LoginDialog', 'link-7');">LoginDialog</a></tt> <tt class="py-keyword">import</tt> <tt id="link-8" class="py-name"><a title="gui.LoginDialog
+gui.LoginDialog.LoginDialog" class="py-name" href="#" onclick="return doclink('link-8', 'LoginDialog', 'link-7');">LoginDialog</a></tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-9" class="py-name"><a title="gui" class="py-name" href="#" onclick="return doclink('link-9', 'gui', 'link-0');">gui</a></tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Module gui.OperationResult=gui.OperationResult-module.html,Class gui.OperationResult.OperationResult=gui.OperationResult.OperationResult-class.html"><a title="gui.OperationResult
+gui.OperationResult.OperationResult" class="py-name" href="#" onclick="return doclink('link-10', 'OperationResult', 'link-10');">OperationResult</a></tt> <tt class="py-keyword">import</tt> <tt id="link-11" class="py-name"><a title="gui.OperationResult
+gui.OperationResult.OperationResult" class="py-name" href="#" onclick="return doclink('link-11', 'OperationResult', 'link-10');">OperationResult</a></tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">dataset</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Package dataset.csv=dataset.csv-module.html"><a title="dataset.csv" class="py-name" href="#" onclick="return doclink('link-12', 'csv', 'link-12');">csv</a></tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Module dataset.csv.CSVTableModel=dataset.csv.CSVTableModel-module.html,Class dataset.csv.CSVTableModel.CSVTableModel=dataset.csv.CSVTableModel.CSVTableModel-class.html"><a title="dataset.csv.CSVTableModel
+dataset.csv.CSVTableModel.CSVTableModel" class="py-name" href="#" onclick="return doclink('link-13', 'CSVTableModel', 'link-13');">CSVTableModel</a></tt> <tt class="py-keyword">import</tt> <tt id="link-14" class="py-name"><a title="dataset.csv.CSVTableModel
+dataset.csv.CSVTableModel.CSVTableModel" class="py-name" href="#" onclick="return doclink('link-14', 'CSVTableModel', 'link-13');">CSVTableModel</a></tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-15" class="py-name" targets="Package users=users-module.html"><a title="users" class="py-name" href="#" onclick="return doclink('link-15', 'users', 'link-15');">users</a></tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Module users.UserRights=users.UserRights-module.html,Class users.UserRights.UserRights=users.UserRights.UserRights-class.html"><a title="users.UserRights
+users.UserRights.UserRights" class="py-name" href="#" onclick="return doclink('link-16', 'UserRights', 'link-16');">UserRights</a></tt> <tt class="py-keyword">import</tt> <tt id="link-17" class="py-name"><a title="users.UserRights
+users.UserRights.UserRights" class="py-name" href="#" onclick="return doclink('link-17', 'UserRights', 'link-16');">UserRights</a></tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
+<a name="CSVTableController"></a><div id="CSVTableController-def"><a name="L15"></a><tt class="py-lineno"> 15</tt> <a class="py-toggle" href="#" id="CSVTableController-toggle" onclick="return toggle('CSVTableController');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="gui.CSVTableController.CSVTableController-class.html">CSVTableController</a><tt class="py-op">(</tt><tt class="py-base-class">AbstractTableController</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CSVTableController-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CSVTableController-expanded"><a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">        Implements AbstractTableController class for *.CSV files tables</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="CSVTableController.__init__"></a><div id="CSVTableController.__init__-def"><a name="L19"></a><tt class="py-lineno"> 19</tt> <a class="py-toggle" href="#" id="CSVTableController.__init__-toggle" onclick="return toggle('CSVTableController.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gui.CSVTableController.CSVTableController-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CSVTableController.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CSVTableController.__init__-expanded"><a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-docstring">            Default constructor</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">        <tt id="link-18" class="py-name"><a title="gui.AbstractTableController
+gui.AbstractTableController.AbstractTableController" class="py-name" href="#" onclick="return doclink('link-18', 'AbstractTableController', 'link-1');">AbstractTableController</a></tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Method dataset.csv.CSVFileEngine.CSVFileEngine.__init__()=dataset.csv.CSVFileEngine.CSVFileEngine-class.html#__init__,Method dataset.csv.CSVTableModel.CSVTableModel.__init__()=dataset.csv.CSVTableModel.CSVTableModel-class.html#__init__,Method dataset.files.AutoResizeableFile.AutoResizeableFile.__init__()=dataset.files.AutoResizeableFile.AutoResizeableFile-class.html#__init__,Method dataset.files.FilePackingListener.FilePackingListener.__init__()=dataset.files.FilePackingListener.FilePackingListener-class.html#__init__,Method dataset.files.RangeShiftingInfo.RangeShiftingInfo.__init__()=dataset.files.RangeShiftingInfo.RangeShiftingInfo-class.html#__init__,Method dataset.files.RangesList.RangesList.__init__()=dataset.files.RangesList.RangesList-class.html#__init__,Method gui.AbstractTableController.AbstractTableController.__init__()=gui.AbstractTableController.AbstractTableController-class.html#__init__,Method gui.CSVTableController.CSVTableController.__init__()=gui.CSVTableController.CSVTableController-class.html#__init__,Method gui.LoginDialog.LoginDialog.__init__()=gui.LoginDialog.LoginDialog-class.html#__init__,Method gui.MainWindow.MainWindow.__init__()=gui.MainWindow.MainWindow-class.html#__init__,Method gui.OperationResult.OperationResult.__init__()=gui.OperationResult.OperationResult-class.html#__init__,Method gui.SearchDialog.SearchDialog.__init__()=gui.SearchDialog.SearchDialog-class.html#__init__,Method gui.SearchResultsDialog.SearchResultsDialog.__init__()=gui.SearchResultsDialog.SearchResultsDialog-class.html#__init__,Method users.User.User.__init__()=users.User.User-class.html#__init__,Method users.UserRights.UserRights.__init__()=users.UserRights.UserRights-class.html#__init__,Method users.UsersList.UsersList.__init__()=users.UsersList.UsersList-class.html#__init__"><a title="dataset.csv.CSVFileEngine.CSVFileEngine.__init__
+dataset.csv.CSVTableModel.CSVTableModel.__init__
+dataset.files.AutoResizeableFile.AutoResizeableFile.__init__
+dataset.files.FilePackingListener.FilePackingListener.__init__
+dataset.files.RangeShiftingInfo.RangeShiftingInfo.__init__
+dataset.files.RangesList.RangesList.__init__
+gui.AbstractTableController.AbstractTableController.__init__
+gui.CSVTableController.CSVTableController.__init__
+gui.LoginDialog.LoginDialog.__init__
+gui.MainWindow.MainWindow.__init__
+gui.OperationResult.OperationResult.__init__
+gui.SearchDialog.SearchDialog.__init__
+gui.SearchResultsDialog.SearchResultsDialog.__init__
+users.User.User.__init__
+users.UserRights.UserRights.__init__
+users.UsersList.UsersList.__init__" class="py-name" href="#" onclick="return doclink('link-19', '__init__', 'link-19');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_user</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_userRights</tt> <tt class="py-op">=</tt> <tt id="link-20" class="py-name"><a title="users.UserRights
+users.UserRights.UserRights" class="py-name" href="#" onclick="return doclink('link-20', 'UserRights', 'link-16');">UserRights</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_application</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_mainWindow</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">         </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">         </tt>
+<a name="CSVTableController.start"></a><div id="CSVTableController.start-def"><a name="L31"></a><tt class="py-lineno"> 31</tt> <a class="py-toggle" href="#" id="CSVTableController.start-toggle" onclick="return toggle('CSVTableController.start');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gui.CSVTableController.CSVTableController-class.html#start">start</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">loginFilePath</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CSVTableController.start-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CSVTableController.start-expanded"><a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring">            Reimplemented from AbstractTableController</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_application</tt> <tt class="py-op">=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QApplication</tt><tt class="py-op">(</tt><tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">argv</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_mainWindow</tt> <tt class="py-op">=</tt> <tt id="link-21" class="py-name"><a title="gui.MainWindow
+gui.MainWindow.MainWindow" class="py-name" href="#" onclick="return doclink('link-21', 'MainWindow', 'link-4');">MainWindow</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_mainWindow</tt><tt class="py-op">.</tt><tt class="py-name">setVisible</tt><tt class="py-op">(</tt><tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-name">loginDialog</tt> <tt class="py-op">=</tt> <tt id="link-22" class="py-name"><a title="gui.LoginDialog
+gui.LoginDialog.LoginDialog" class="py-name" href="#" onclick="return doclink('link-22', 'LoginDialog', 'link-7');">LoginDialog</a></tt><tt class="py-op">(</tt><tt class="py-name">loginFilePath</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">QObject</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-name">loginDialog</tt><tt class="py-op">,</tt> <tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">SIGNAL</tt><tt class="py-op">(</tt><tt class="py-string">"userLoggedIn(QObject)"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name" targets="Method gui.AbstractTableController.AbstractTableController.userLoggedIn()=gui.AbstractTableController.AbstractTableController-class.html#userLoggedIn,Method gui.CSVTableController.CSVTableController.userLoggedIn()=gui.CSVTableController.CSVTableController-class.html#userLoggedIn"><a title="gui.AbstractTableController.AbstractTableController.userLoggedIn
+gui.CSVTableController.CSVTableController.userLoggedIn" class="py-name" href="#" onclick="return doclink('link-23', 'userLoggedIn', 'link-23');">userLoggedIn</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-name">loginDialog</tt><tt class="py-op">.</tt><tt class="py-name">setModal</tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">        <tt class="py-name">loginDialog</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name" targets="Method gui.SearchDialog.SearchDialog.show()=gui.SearchDialog.SearchDialog-class.html#show"><a title="gui.SearchDialog.SearchDialog.show" class="py-name" href="#" onclick="return doclink('link-24', 'show', 'link-24');">show</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">exit</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_application</tt><tt class="py-op">.</tt><tt class="py-name">exec_</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">         </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">         </tt>
+<a name="CSVTableController.userLoggedIn"></a><div id="CSVTableController.userLoggedIn-def"><a name="L45"></a><tt class="py-lineno"> 45</tt> <a class="py-toggle" href="#" id="CSVTableController.userLoggedIn-toggle" onclick="return toggle('CSVTableController.userLoggedIn');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gui.CSVTableController.CSVTableController-class.html#userLoggedIn">userLoggedIn</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">user</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CSVTableController.userLoggedIn-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CSVTableController.userLoggedIn-expanded"><a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt class="py-docstring">            Reimplemented from AbstractTableController</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">user</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt> <tt class="py-keyword">or</tt> <tt class="py-op">(</tt><tt class="py-name">user</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Method users.User.User.login()=users.User.User-class.html#login"><a title="users.User.User.login" class="py-name" href="#" onclick="return doclink('link-25', 'login', 'link-25');">login</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-string">""</tt> <tt class="py-keyword">and</tt> <tt class="py-name">user</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name" targets="Method users.User.User.password()=users.User.User-class.html#password"><a title="users.User.User.password" class="py-name" href="#" onclick="return doclink('link-26', 'password', 'link-26');">password</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-string">""</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_application</tt><tt class="py-op">.</tt><tt class="py-name">exit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_user</tt> <tt class="py-op">=</tt> <tt class="py-name">user</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_userRights</tt> <tt class="py-op">=</tt> <tt class="py-name">user</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name" targets="Method users.User.User.rights()=users.User.User-class.html#rights"><a title="users.User.User.rights" class="py-name" href="#" onclick="return doclink('link-27', 'rights', 'link-27');">rights</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_mainWindow</tt><tt class="py-op">.</tt><tt class="py-name">setVisible</tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt>        </tt>
+</div><a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">     </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">     </tt>
+<a name="CSVTableController.openTable"></a><div id="CSVTableController.openTable-def"><a name="L57"></a><tt class="py-lineno"> 57</tt> <a class="py-toggle" href="#" id="CSVTableController.openTable-toggle" onclick="return toggle('CSVTableController.openTable');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gui.CSVTableController.CSVTableController-class.html#openTable">openTable</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">tablePath</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CSVTableController.openTable-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CSVTableController.openTable-expanded"><a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-docstring">            Reimplemented from AbstractTableController</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">            <tt class="py-keyword">with</tt> <tt class="py-name">open</tt><tt class="py-op">(</tt><tt class="py-name">tablePath</tt><tt class="py-op">)</tt> <tt class="py-keyword">as</tt> <tt class="py-name">testingObject</tt><tt class="py-op">:</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">                <tt class="py-keyword">pass</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">IOError</tt><tt class="py-op">,</tt> <tt class="py-name">exception</tt><tt class="py-op">:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-28" class="py-name"><a title="gui.OperationResult
+gui.OperationResult.OperationResult" class="py-name" href="#" onclick="return doclink('link-28', 'OperationResult', 'link-10');">OperationResult</a></tt><tt class="py-op">(</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-string">"File error: "</tt> <tt class="py-op">+</tt> <tt class="py-name">exception</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name" targets="Method gui.OperationResult.OperationResult.message()=gui.OperationResult.OperationResult-class.html#message"><a title="gui.OperationResult.OperationResult.message" class="py-name" href="#" onclick="return doclink('link-29', 'message', 'link-29');">message</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt> <tt class="py-op">=</tt> <tt id="link-30" class="py-name"><a title="dataset.csv.CSVTableModel
+dataset.csv.CSVTableModel.CSVTableModel" class="py-name" href="#" onclick="return doclink('link-30', 'CSVTableModel', 'link-13');">CSVTableModel</a></tt><tt class="py-op">(</tt><tt class="py-name">tablePath</tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">exception</tt><tt class="py-op">:</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-31" class="py-name"><a title="gui.OperationResult
+gui.OperationResult.OperationResult" class="py-name" href="#" onclick="return doclink('link-31', 'OperationResult', 'link-10');">OperationResult</a></tt><tt class="py-op">(</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-string">"Model error: "</tt> <tt class="py-op">+</tt> <tt class="py-name">exception</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name"><a title="gui.OperationResult.OperationResult.message" class="py-name" href="#" onclick="return doclink('link-32', 'message', 'link-29');">message</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-33" class="py-name"><a title="gui.OperationResult
+gui.OperationResult.OperationResult" class="py-name" href="#" onclick="return doclink('link-33', 'OperationResult', 'link-10');">OperationResult</a></tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">         </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">         </tt>
+<a name="CSVTableController.insertRow"></a><div id="CSVTableController.insertRow-def"><a name="L73"></a><tt class="py-lineno"> 73</tt> <a class="py-toggle" href="#" id="CSVTableController.insertRow-toggle" onclick="return toggle('CSVTableController.insertRow');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gui.CSVTableController.CSVTableController-class.html#insertRow">insertRow</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">rowIndex</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CSVTableController.insertRow-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CSVTableController.insertRow-expanded"><a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring">            Reimplemented from AbstractTableController</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_user</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt> <tt class="py-keyword">or</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_userRights</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name" targets="Method users.UserRights.UserRights.rowsAddingPermited()=users.UserRights.UserRights-class.html#rowsAddingPermited"><a title="users.UserRights.UserRights.rowsAddingPermited" class="py-name" href="#" onclick="return doclink('link-34', 'rowsAddingPermited', 'link-34');">rowsAddingPermited</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-35" class="py-name"><a title="gui.OperationResult
+gui.OperationResult.OperationResult" class="py-name" href="#" onclick="return doclink('link-35', 'OperationResult', 'link-10');">OperationResult</a></tt><tt class="py-op">(</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-string">"Rights error: not permited!"</tt><tt class="py-op">)</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name" targets="Method dataset.csv.CSVFileEngine.CSVFileEngine.insertRow()=dataset.csv.CSVFileEngine.CSVFileEngine-class.html#insertRow,Method dataset.csv.CSVTableModel.CSVTableModel.insertRow()=dataset.csv.CSVTableModel.CSVTableModel-class.html#insertRow,Method gui.AbstractTableController.AbstractTableController.insertRow()=gui.AbstractTableController.AbstractTableController-class.html#insertRow,Method gui.CSVTableController.CSVTableController.insertRow()=gui.CSVTableController.CSVTableController-class.html#insertRow"><a title="dataset.csv.CSVFileEngine.CSVFileEngine.insertRow
+dataset.csv.CSVTableModel.CSVTableModel.insertRow
+gui.AbstractTableController.AbstractTableController.insertRow
+gui.CSVTableController.CSVTableController.insertRow" class="py-name" href="#" onclick="return doclink('link-36', 'insertRow', 'link-36');">insertRow</a></tt><tt class="py-op">(</tt><tt class="py-name">rowIndex</tt><tt class="py-op">)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">exception</tt><tt class="py-op">:</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-37" class="py-name"><a title="gui.OperationResult
+gui.OperationResult.OperationResult" class="py-name" href="#" onclick="return doclink('link-37', 'OperationResult', 'link-10');">OperationResult</a></tt><tt class="py-op">(</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-string">"Model error: "</tt> <tt class="py-op">+</tt> <tt class="py-name">exception</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name"><a title="gui.OperationResult.OperationResult.message" class="py-name" href="#" onclick="return doclink('link-38', 'message', 'link-29');">message</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-39" class="py-name"><a title="gui.OperationResult
+gui.OperationResult.OperationResult" class="py-name" href="#" onclick="return doclink('link-39', 'OperationResult', 'link-10');">OperationResult</a></tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">                 </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">         </tt>
+<a name="CSVTableController.removeRow"></a><div id="CSVTableController.removeRow-def"><a name="L86"></a><tt class="py-lineno"> 86</tt> <a class="py-toggle" href="#" id="CSVTableController.removeRow-toggle" onclick="return toggle('CSVTableController.removeRow');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gui.CSVTableController.CSVTableController-class.html#removeRow">removeRow</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">rowIndex</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CSVTableController.removeRow-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CSVTableController.removeRow-expanded"><a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt class="py-docstring">            Reimplemented from AbstractTableController</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_user</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt> <tt class="py-keyword">or</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_userRights</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name" targets="Method users.UserRights.UserRights.rowsRemovingPermited()=users.UserRights.UserRights-class.html#rowsRemovingPermited"><a title="users.UserRights.UserRights.rowsRemovingPermited" class="py-name" href="#" onclick="return doclink('link-40', 'rowsRemovingPermited', 'link-40');">rowsRemovingPermited</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-41" class="py-name"><a title="gui.OperationResult
+gui.OperationResult.OperationResult" class="py-name" href="#" onclick="return doclink('link-41', 'OperationResult', 'link-10');">OperationResult</a></tt><tt class="py-op">(</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-string">"Rights error: not permited!"</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt id="link-42" class="py-name" targets="Method dataset.csv.CSVFileEngine.CSVFileEngine.removeRow()=dataset.csv.CSVFileEngine.CSVFileEngine-class.html#removeRow,Method dataset.csv.CSVTableModel.CSVTableModel.removeRow()=dataset.csv.CSVTableModel.CSVTableModel-class.html#removeRow,Method gui.AbstractTableController.AbstractTableController.removeRow()=gui.AbstractTableController.AbstractTableController-class.html#removeRow,Method gui.CSVTableController.CSVTableController.removeRow()=gui.CSVTableController.CSVTableController-class.html#removeRow"><a title="dataset.csv.CSVFileEngine.CSVFileEngine.removeRow
+dataset.csv.CSVTableModel.CSVTableModel.removeRow
+gui.AbstractTableController.AbstractTableController.removeRow
+gui.CSVTableController.CSVTableController.removeRow" class="py-name" href="#" onclick="return doclink('link-42', 'removeRow', 'link-42');">removeRow</a></tt><tt class="py-op">(</tt><tt class="py-name">rowIndex</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">exception</tt><tt class="py-op">:</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-43" class="py-name"><a title="gui.OperationResult
+gui.OperationResult.OperationResult" class="py-name" href="#" onclick="return doclink('link-43', 'OperationResult', 'link-10');">OperationResult</a></tt><tt class="py-op">(</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-string">"Model error: "</tt> <tt class="py-op">+</tt> <tt class="py-name">exception</tt><tt class="py-op">.</tt><tt id="link-44" class="py-name"><a title="gui.OperationResult.OperationResult.message" class="py-name" href="#" onclick="return doclink('link-44', 'message', 'link-29');">message</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-45" class="py-name"><a title="gui.OperationResult
+gui.OperationResult.OperationResult" class="py-name" href="#" onclick="return doclink('link-45', 'OperationResult', 'link-10');">OperationResult</a></tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">     </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">     </tt>
+<a name="CSVTableController.searchRows"></a><div id="CSVTableController.searchRows-def"><a name="L99"></a><tt class="py-lineno"> 99</tt> <a class="py-toggle" href="#" id="CSVTableController.searchRows-toggle" onclick="return toggle('CSVTableController.searchRows');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gui.CSVTableController.CSVTableController-class.html#searchRows">searchRows</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">keyColumn</tt><tt class="py-op">,</tt> <tt class="py-param">key</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CSVTableController.searchRows-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CSVTableController.searchRows-expanded"><a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-docstring">            Reimplemented from AbstractTableController</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-46" class="py-name"><a title="gui.OperationResult
+gui.OperationResult.OperationResult" class="py-name" href="#" onclick="return doclink('link-46', 'OperationResult', 'link-10');">OperationResult</a></tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name" targets="Method dataset.csv.CSVTableModel.CSVTableModel.search()=dataset.csv.CSVTableModel.CSVTableModel-class.html#search"><a title="dataset.csv.CSVTableModel.CSVTableModel.search" class="py-name" href="#" onclick="return doclink('link-47', 'search', 'link-47');">search</a></tt><tt class="py-op">(</tt><tt class="py-name">keyColumn</tt><tt class="py-op">,</tt> <tt class="py-name">key</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">exception</tt><tt class="py-op">:</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-48" class="py-name"><a title="gui.OperationResult
+gui.OperationResult.OperationResult" class="py-name" href="#" onclick="return doclink('link-48', 'OperationResult', 'link-10');">OperationResult</a></tt><tt class="py-op">(</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-string">"Model error: "</tt> <tt class="py-op">+</tt> <tt class="py-name">exception</tt><tt class="py-op">.</tt><tt id="link-49" class="py-name"><a title="gui.OperationResult.OperationResult.message" class="py-name" href="#" onclick="return doclink('link-49', 'message', 'link-29');">message</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">             </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">     </tt>
+<a name="CSVTableController.modifyField"></a><div id="CSVTableController.modifyField-def"><a name="L109"></a><tt class="py-lineno">109</tt> <a class="py-toggle" href="#" id="CSVTableController.modifyField-toggle" onclick="return toggle('CSVTableController.modifyField');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gui.CSVTableController.CSVTableController-class.html#modifyField">modifyField</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">row</tt><tt class="py-op">,</tt> <tt class="py-param">column</tt><tt class="py-op">,</tt> <tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CSVTableController.modifyField-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CSVTableController.modifyField-expanded"><a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"><tt class="py-docstring">            Reimplemented from AbstractTableController</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_user</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt> <tt class="py-keyword">or</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_userRights</tt><tt class="py-op">.</tt><tt id="link-50" class="py-name" targets="Method users.UserRights.UserRights.fieldsModifyingPermited()=users.UserRights.UserRights-class.html#fieldsModifyingPermited"><a title="users.UserRights.UserRights.fieldsModifyingPermited" class="py-name" href="#" onclick="return doclink('link-50', 'fieldsModifyingPermited', 'link-50');">fieldsModifyingPermited</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-51" class="py-name"><a title="gui.OperationResult
+gui.OperationResult.OperationResult" class="py-name" href="#" onclick="return doclink('link-51', 'OperationResult', 'link-10');">OperationResult</a></tt><tt class="py-op">(</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-string">"Rights error: not permited!"</tt><tt class="py-op">)</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt id="link-52" class="py-name" targets="Method dataset.csv.CSVTableModel.CSVTableModel.setData()=dataset.csv.CSVTableModel.CSVTableModel-class.html#setData,Method gui.OperationResult.OperationResult.setData()=gui.OperationResult.OperationResult-class.html#setData"><a title="dataset.csv.CSVTableModel.CSVTableModel.setData
+gui.OperationResult.OperationResult.setData" class="py-name" href="#" onclick="return doclink('link-52', 'setData', 'link-52');">setData</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt class="py-name">createIndex</tt><tt class="py-op">(</tt><tt class="py-name">row</tt><tt class="py-op">,</tt> <tt class="py-name">column</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt id="link-53" class="py-name" targets="Method dataset.csv.CSVTableModel.CSVTableModel.data()=dataset.csv.CSVTableModel.CSVTableModel-class.html#data,Method gui.OperationResult.OperationResult.data()=gui.OperationResult.OperationResult-class.html#data"><a title="dataset.csv.CSVTableModel.CSVTableModel.data
+gui.OperationResult.OperationResult.data" class="py-name" href="#" onclick="return doclink('link-53', 'data', 'link-53');">data</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">exception</tt><tt class="py-op">:</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-54" class="py-name"><a title="gui.OperationResult
+gui.OperationResult.OperationResult" class="py-name" href="#" onclick="return doclink('link-54', 'OperationResult', 'link-10');">OperationResult</a></tt><tt class="py-op">(</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-string">"Model error: "</tt> <tt class="py-op">+</tt> <tt class="py-name">exception</tt><tt class="py-op">.</tt><tt id="link-55" class="py-name"><a title="gui.OperationResult.OperationResult.message" class="py-name" href="#" onclick="return doclink('link-55', 'message', 'link-29');">message</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-56" class="py-name"><a title="gui.OperationResult
+gui.OperationResult.OperationResult" class="py-name" href="#" onclick="return doclink('link-56', 'OperationResult', 'link-10');">OperationResult</a></tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">     </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">     </tt>
+<a name="CSVTableController.model"></a><div id="CSVTableController.model-def"><a name="L122"></a><tt class="py-lineno">122</tt> <a class="py-toggle" href="#" id="CSVTableController.model-toggle" onclick="return toggle('CSVTableController.model');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gui.CSVTableController.CSVTableController-class.html#model">model</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CSVTableController.model-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CSVTableController.model-expanded"><a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"><tt class="py-docstring">            Reimplemented from AbstractTableController</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt> </tt>
+</div><a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">     </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">     </tt>
+<a name="CSVTableController.save"></a><div id="CSVTableController.save-def"><a name="L129"></a><tt class="py-lineno">129</tt> <a class="py-toggle" href="#" id="CSVTableController.save-toggle" onclick="return toggle('CSVTableController.save');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gui.CSVTableController.CSVTableController-class.html#save">save</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CSVTableController.save-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CSVTableController.save-expanded"><a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"><tt class="py-docstring">            Reimplemented from AbstractTableController</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt id="link-57" class="py-name" targets="Method dataset.csv.CSVTableModel.CSVTableModel.save()=dataset.csv.CSVTableModel.CSVTableModel-class.html#save,Method gui.AbstractTableController.AbstractTableController.save()=gui.AbstractTableController.AbstractTableController-class.html#save,Method gui.CSVTableController.CSVTableController.save()=gui.CSVTableController.CSVTableController-class.html#save"><a title="dataset.csv.CSVTableModel.CSVTableModel.save
+gui.AbstractTableController.AbstractTableController.save
+gui.CSVTableController.CSVTableController.save" class="py-name" href="#" onclick="return doclink('link-57', 'save', 'link-57');">save</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-58" class="py-name"><a title="gui.OperationResult
+gui.OperationResult.OperationResult" class="py-name" href="#" onclick="return doclink('link-58', 'OperationResult', 'link-10');">OperationResult</a></tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">         </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">         </tt>
+<a name="CSVTableController.close"></a><div id="CSVTableController.close-def"><a name="L137"></a><tt class="py-lineno">137</tt> <a class="py-toggle" href="#" id="CSVTableController.close-toggle" onclick="return toggle('CSVTableController.close');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gui.CSVTableController.CSVTableController-class.html#close">close</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CSVTableController.close-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CSVTableController.close-expanded"><a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt class="py-docstring">            Reimplemented from AbstractTableController</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-59" class="py-name"><a title="gui.OperationResult
+gui.OperationResult.OperationResult" class="py-name" href="#" onclick="return doclink('link-59', 'OperationResult', 'link-10');">OperationResult</a></tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Sep 30 22:41:55 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

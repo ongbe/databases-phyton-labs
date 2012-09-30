@@ -40,16 +40,7 @@ class CSVFileEngine(FilePackingListener):
         
     def flush(self):
         """
-<<<<<<< HEAD
             Flushes all changes to disk
-=======
-        
-        """
-        self._file.flush()
-        
-        
-    def filePackedEvent(self, packingInfoList):
->>>>>>> 44786a20d2b05b7d3d55e44a8ac9f7365e1efaa8
         """
         self._file.flush()
         
@@ -176,7 +167,7 @@ class CSVFileEngine(FilePackingListener):
         self._rowsCount = self._rowsCount + 1
         
         
-    def removeRowAction(self, row): 
+    def removeRow(self, row): 
         """
             Removes row in the specified position. Returns None.
             'rowIndex' - zero-based removing row index
@@ -315,7 +306,6 @@ class CSVFileEngine(FilePackingListener):
                 right = middle
             else:
                 left = middle + 1
-        print data, left, right
         return orderFile.realPositionFor(right * 4)
 
     
