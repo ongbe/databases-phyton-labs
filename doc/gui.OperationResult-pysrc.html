@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>gui.OperationResult</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="gui-module.html">Package&nbsp;gui</a> ::
+        Module&nbsp;OperationResult
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="gui.OperationResult-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="gui.OperationResult-module.html">Module gui.OperationResult</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">    Module for representing operation result class</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">PyQt4</tt> <tt class="py-keyword">import</tt> <tt class="py-name">QtCore</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="OperationResult"></a><div id="OperationResult-def"><a name="L7"></a><tt class="py-lineno"> 7</tt> <a class="py-toggle" href="#" id="OperationResult-toggle" onclick="return toggle('OperationResult');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="gui.OperationResult.OperationResult-class.html">OperationResult</a><tt class="py-op">(</tt><tt class="py-base-class">QtCore</tt><tt class="py-op">.</tt><tt class="py-base-class">QObject</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OperationResult-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="OperationResult-expanded"><a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-docstring">        Represents result of operation</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="OperationResult.__init__"></a><div id="OperationResult.__init__-def"><a name="L11"></a><tt class="py-lineno">11</tt> <a class="py-toggle" href="#" id="OperationResult.__init__-toggle" onclick="return toggle('OperationResult.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gui.OperationResult.OperationResult-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">isOk</tt><tt class="py-op">,</tt> <tt class="py-param">data</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">message</tt> <tt class="py-op">=</tt> <tt class="py-string">"OK"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OperationResult.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="OperationResult.__init__-expanded"><a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-docstring">            Default constructor</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-docstring">            'isOk' - True, if operation succeed, False - otherwise</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-docstring">            'data' - any user-defined data</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-docstring">            'massage' - user-friendly text message</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">        <tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">QObject</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Method dataset.csv.CSVFileEngine.CSVFileEngine.__init__()=dataset.csv.CSVFileEngine.CSVFileEngine-class.html#__init__,Method dataset.csv.CSVTableModel.CSVTableModel.__init__()=dataset.csv.CSVTableModel.CSVTableModel-class.html#__init__,Method dataset.files.AutoResizeableFile.AutoResizeableFile.__init__()=dataset.files.AutoResizeableFile.AutoResizeableFile-class.html#__init__,Method dataset.files.FilePackingListener.FilePackingListener.__init__()=dataset.files.FilePackingListener.FilePackingListener-class.html#__init__,Method dataset.files.RangeShiftingInfo.RangeShiftingInfo.__init__()=dataset.files.RangeShiftingInfo.RangeShiftingInfo-class.html#__init__,Method dataset.files.RangesList.RangesList.__init__()=dataset.files.RangesList.RangesList-class.html#__init__,Method gui.AbstractTableController.AbstractTableController.__init__()=gui.AbstractTableController.AbstractTableController-class.html#__init__,Method gui.CSVTableController.CSVTableController.__init__()=gui.CSVTableController.CSVTableController-class.html#__init__,Method gui.LoginDialog.LoginDialog.__init__()=gui.LoginDialog.LoginDialog-class.html#__init__,Method gui.MainWindow.MainWindow.__init__()=gui.MainWindow.MainWindow-class.html#__init__,Method gui.OperationResult.OperationResult.__init__()=gui.OperationResult.OperationResult-class.html#__init__,Method gui.SearchDialog.SearchDialog.__init__()=gui.SearchDialog.SearchDialog-class.html#__init__,Method gui.SearchResultsDialog.SearchResultsDialog.__init__()=gui.SearchResultsDialog.SearchResultsDialog-class.html#__init__,Method users.User.User.__init__()=users.User.User-class.html#__init__,Method users.UserRights.UserRights.__init__()=users.UserRights.UserRights-class.html#__init__,Method users.UsersList.UsersList.__init__()=users.UsersList.UsersList-class.html#__init__"><a title="dataset.csv.CSVFileEngine.CSVFileEngine.__init__
+dataset.csv.CSVTableModel.CSVTableModel.__init__
+dataset.files.AutoResizeableFile.AutoResizeableFile.__init__
+dataset.files.FilePackingListener.FilePackingListener.__init__
+dataset.files.RangeShiftingInfo.RangeShiftingInfo.__init__
+dataset.files.RangesList.RangesList.__init__
+gui.AbstractTableController.AbstractTableController.__init__
+gui.CSVTableController.CSVTableController.__init__
+gui.LoginDialog.LoginDialog.__init__
+gui.MainWindow.MainWindow.__init__
+gui.OperationResult.OperationResult.__init__
+gui.SearchDialog.SearchDialog.__init__
+gui.SearchResultsDialog.SearchResultsDialog.__init__
+users.User.User.__init__
+users.UserRights.UserRights.__init__
+users.UsersList.UsersList.__init__" class="py-name" href="#" onclick="return doclink('link-0', '__init__', 'link-0');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_isOk</tt> <tt class="py-op">=</tt> <tt id="link-1" class="py-name" targets="Method gui.OperationResult.OperationResult.isOk()=gui.OperationResult.OperationResult-class.html#isOk"><a title="gui.OperationResult.OperationResult.isOk" class="py-name" href="#" onclick="return doclink('link-1', 'isOk', 'link-1');">isOk</a></tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_message</tt> <tt class="py-op">=</tt> <tt id="link-2" class="py-name" targets="Method gui.OperationResult.OperationResult.message()=gui.OperationResult.OperationResult-class.html#message"><a title="gui.OperationResult.OperationResult.message" class="py-name" href="#" onclick="return doclink('link-2', 'message', 'link-2');">message</a></tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_data</tt> <tt class="py-op">=</tt> <tt id="link-3" class="py-name" targets="Method dataset.csv.CSVTableModel.CSVTableModel.data()=dataset.csv.CSVTableModel.CSVTableModel-class.html#data,Method gui.OperationResult.OperationResult.data()=gui.OperationResult.OperationResult-class.html#data"><a title="dataset.csv.CSVTableModel.CSVTableModel.data
+gui.OperationResult.OperationResult.data" class="py-name" href="#" onclick="return doclink('link-3', 'data', 'link-3');">data</a></tt> </tt>
+</div><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">         </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">         </tt>
+<a name="OperationResult.isOk"></a><div id="OperationResult.isOk-def"><a name="L24"></a><tt class="py-lineno">24</tt> <a class="py-toggle" href="#" id="OperationResult.isOk-toggle" onclick="return toggle('OperationResult.isOk');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gui.OperationResult.OperationResult-class.html#isOk">isOk</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OperationResult.isOk-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="OperationResult.isOk-expanded"><a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-docstring">            Returns operation success status</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_isOk</tt> </tt>
+</div><a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">     </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">     </tt>
+<a name="OperationResult.message"></a><div id="OperationResult.message-def"><a name="L31"></a><tt class="py-lineno">31</tt> <a class="py-toggle" href="#" id="OperationResult.message-toggle" onclick="return toggle('OperationResult.message');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gui.OperationResult.OperationResult-class.html#message">message</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OperationResult.message-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="OperationResult.message-expanded"><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-docstring">            Returns user-friendly message</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_message</tt> </tt>
+</div><a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">     </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">     </tt>
+<a name="OperationResult.data"></a><div id="OperationResult.data-def"><a name="L38"></a><tt class="py-lineno">38</tt> <a class="py-toggle" href="#" id="OperationResult.data-toggle" onclick="return toggle('OperationResult.data');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gui.OperationResult.OperationResult-class.html#data">data</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OperationResult.data-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="OperationResult.data-expanded"><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"><tt class="py-docstring">            Returns user-defined data</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_data</tt> </tt>
+</div><a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">     </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">     </tt>
+<a name="OperationResult.setOk"></a><div id="OperationResult.setOk-def"><a name="L45"></a><tt class="py-lineno">45</tt> <a class="py-toggle" href="#" id="OperationResult.setOk-toggle" onclick="return toggle('OperationResult.setOk');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gui.OperationResult.OperationResult-class.html#setOk">setOk</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">isOk</tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OperationResult.setOk-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="OperationResult.setOk-expanded"><a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"><tt class="py-docstring">            Sets operation success status. Returns None</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_isOk</tt> <tt class="py-op">=</tt> <tt id="link-4" class="py-name"><a title="gui.OperationResult.OperationResult.isOk" class="py-name" href="#" onclick="return doclink('link-4', 'isOk', 'link-1');">isOk</a></tt> </tt>
+</div><a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">         </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">         </tt>
+<a name="OperationResult.setMessage"></a><div id="OperationResult.setMessage-def"><a name="L52"></a><tt class="py-lineno">52</tt> <a class="py-toggle" href="#" id="OperationResult.setMessage-toggle" onclick="return toggle('OperationResult.setMessage');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gui.OperationResult.OperationResult-class.html#setMessage">setMessage</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">message</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OperationResult.setMessage-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="OperationResult.setMessage-expanded"><a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"><tt class="py-docstring">             Sets user-friendly message. Returns None</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_message</tt> <tt class="py-op">=</tt> <tt id="link-5" class="py-name"><a title="gui.OperationResult.OperationResult.message" class="py-name" href="#" onclick="return doclink('link-5', 'message', 'link-2');">message</a></tt> </tt>
+</div><a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">         </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">         </tt>
+<a name="OperationResult.setData"></a><div id="OperationResult.setData-def"><a name="L59"></a><tt class="py-lineno">59</tt> <a class="py-toggle" href="#" id="OperationResult.setData-toggle" onclick="return toggle('OperationResult.setData');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gui.OperationResult.OperationResult-class.html#setData">setData</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OperationResult.setData-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="OperationResult.setData-expanded"><a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"><tt class="py-docstring">            Sets user-defined data. Returns None</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_data</tt> <tt class="py-op">=</tt> <tt id="link-6" class="py-name"><a title="dataset.csv.CSVTableModel.CSVTableModel.data
+gui.OperationResult.OperationResult.data" class="py-name" href="#" onclick="return doclink('link-6', 'data', 'link-3');">data</a></tt> </tt>
+</div></div><a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Sep 30 22:41:55 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
