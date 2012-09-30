@@ -3,7 +3,7 @@
 """
 
 from PyQt4 import QtGui, QtCore
-from LoginDialogUI import Ui_loginDialog
+from gui.interfaces.LoginDialogUI import Ui_loginDialog
 from users.UsersList import UsersList
 from users.User import User
 

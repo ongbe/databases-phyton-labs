@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>605</width>
-    <height>467</height>
+    <width>647</width>
+    <height>506</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,8 +28,8 @@
      <rect>
       <x>0</x>
       <y>30</y>
-      <width>601</width>
-      <height>401</height>
+      <width>641</width>
+      <height>431</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -43,9 +43,12 @@
      <rect>
       <x>0</x>
       <y>10</y>
-      <width>599</width>
-      <height>43</height>
+      <width>641</width>
+      <height>21</height>
      </rect>
+    </property>
+    <property name="tabPosition">
+     <enum>QTabWidget::South</enum>
     </property>
     <property name="currentIndex">
      <number>0</number>
@@ -69,7 +72,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>605</width>
+     <width>647</width>
      <height>20</height>
     </rect>
    </property>

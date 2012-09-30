@@ -170,8 +170,7 @@ class AutoResizeableFile(QtCore.QObject):
         """
         size = self._validateInteger(size)
         if size == -1:
-            size = self._file.size() - self.position()
-        oldPosition = self.position()   
+            size = self._file.size() - self.position()   
         data = str(self._file.read(size))
         return data
     

@@ -35,6 +35,13 @@ class CSVFileEngine(FilePackingListener):
         self._file.setPosition(oldPosition)
         
         
+    def flush(self):
+        """
+        
+        """
+        self._file.flush()
+        
+        
     def filePackedEvent(self, packingInfoList):
         """
         
@@ -149,7 +156,7 @@ class CSVFileEngine(FilePackingListener):
         self._rowsCount = self._rowsCount + 1
         
         
-    def removeRow(self, row): 
+    def removeRowAction(self, row): 
         """
         
         """
@@ -183,7 +190,22 @@ class CSVFileEngine(FilePackingListener):
                 result.append(rowData)
             else:
                 break
-        return result
+        temporaryFile = AutoResizeableFile()
+        string = ""
+        for i in xrange(0, self._columnsCount):
+            string += self._titles[i]
+            if i != self._columnsCount - 1:
+                string += ";"
+        temporaryFile.writeLine(string)
+        result.sort(lambda x, y: x[0] - y[0])
+        for item in result:
+            string = ""
+            for i in xrange(1, len(item)):
+                string += item[i]
+                if i != len(item) - 1:
+                    string += ";"
+            temporaryFile.writeLine(string)
+        return CSVFileEngine(temporaryFile)
     
     
     def fieldsIndexes(self):

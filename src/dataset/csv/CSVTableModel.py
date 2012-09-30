@@ -13,10 +13,15 @@ class CSVTableModel(QtCore.QAbstractTableModel):
     """
     
     """
-    def __init__ (self, filePath = None):
+    def __init__ (self, filePath = None, engine = None):
+        """
+        
+        """
         QtCore.QAbstractTableModel.__init__(self)
-        self._file = AutoResizeableFile(filePath)
-        self._engine = CSVFileEngine(self._file)
+        self._engine = engine
+        if self._engine == None:
+            engineFile = AutoResizeableFile(filePath)
+            self._engine = CSVFileEngine(engineFile)
             
     
     def rowCount(self, modelIndex = QtCore.QModelIndex()):
@@ -77,12 +82,12 @@ class CSVTableModel(QtCore.QAbstractTableModel):
         return True
     
     
-    def removeRow(self, row, parent = QtCore.QModelIndex()):
+    def removeRowAction(self, row, parent = QtCore.QModelIndex()):
         """
         
         """
         QtCore.QAbstractTableModel.beginRemoveRows(self, parent, row, row)
-        self._engine.removeRow(row)
+        self._engine.removeRowAction(row)
         QtCore.QAbstractTableModel.endRemoveRows(self)
         return True
     
@@ -93,7 +98,7 @@ class CSVTableModel(QtCore.QAbstractTableModel):
         """
         
         for i in xrange(row, row + count):
-            self.removeRow(row)
+            self.removeRowAction(row)
         return True
         
         
@@ -105,11 +110,11 @@ class CSVTableModel(QtCore.QAbstractTableModel):
         return True
     
     
-    def searchIn(self, keyColumn, key):
+    def search(self, keyColumn, key):
         """
         
         """
-        return self._engine.searchRows(keyColumn, key)
+        return CSVTableModel(None, self._engine.searchRows(keyColumn, key))
         
         
     def flags(self, index):
@@ -117,6 +122,13 @@ class CSVTableModel(QtCore.QAbstractTableModel):
         
         """
         return QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable
+    
+    
+    def save(self):
+        """
+        
+        """
+        self._engine.flush()
             
     
     def _validateQModelIndex(self, index):
