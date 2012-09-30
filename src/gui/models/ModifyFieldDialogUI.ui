@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>InsertNewDialog</class>
- <widget class="QDialog" name="InsertNewDialog">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>292</width>
-    <height>295</height>
+    <width>228</width>
+    <height>102</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Insert new...</string>
-  </property>
-  <property name="modal">
-   <bool>false</bool>
+   <string>Modifying field...</string>
   </property>
   <widget class="QPushButton" name="okButton">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>260</y>
+     <x>60</x>
+     <y>60</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -29,11 +26,21 @@
     <string>OK</string>
    </property>
   </widget>
+  <widget class="QLineEdit" name="valueEdit">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>30</y>
+     <width>201</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QPushButton" name="cancelButton">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>260</y>
+     <x>140</x>
+     <y>60</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -42,28 +49,18 @@
     <string>Cancel</string>
    </property>
   </widget>
-  <widget class="QScrollArea" name="scrollArea">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>20</x>
      <y>10</y>
-     <width>271</width>
-     <height>241</height>
+     <width>91</width>
+     <height>16</height>
     </rect>
    </property>
-   <property name="widgetResizable">
-    <bool>true</bool>
+   <property name="text">
+    <string>New value:</string>
    </property>
-   <widget class="QWidget" name="scrollAreaWidgetContents">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>269</width>
-      <height>239</height>
-     </rect>
-    </property>
-   </widget>
   </widget>
  </widget>
  <resources/>
