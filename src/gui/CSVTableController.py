@@ -1,5 +1,6 @@
 """
-
+    Contains an AbstractTableController implementing class
+for *.CSV files tables
 """
 
 import sys
@@ -13,11 +14,11 @@ from users.UserRights import UserRights
 
 class CSVTableController(AbstractTableController):
     """
-    
+        Implements AbstractTableController class for *.CSV files tables
     """
     def __init__(self):
         """
-        
+            Default constructor
         """
         AbstractTableController.__init__(self)
         self._user = None
@@ -29,7 +30,7 @@ class CSVTableController(AbstractTableController):
         
     def start(self, loginFilePath):
         """
-        
+            Reimplemented from AbstractTableController
         """
         self._application = QtGui.QApplication(sys.argv)
         self._mainWindow = MainWindow(self)
@@ -43,7 +44,7 @@ class CSVTableController(AbstractTableController):
         
     def userLoggedIn(self, user):
         """
-        
+            Reimplemented from AbstractTableController
         """
         if user == None or (user.login() == "" and user.password() == ""):
             self._application.exit()
@@ -55,7 +56,7 @@ class CSVTableController(AbstractTableController):
     
     def openTable(self, tablePath):
         """
-        
+            Reimplemented from AbstractTableController
         """
         try:
             with open(tablePath) as testingObject:
@@ -71,7 +72,7 @@ class CSVTableController(AbstractTableController):
         
     def insertRow(self, rowIndex):
         """
-        
+            Reimplemented from AbstractTableController
         """
         if self._user == None or not self._userRights.rowsAddingPermited():
             return OperationResult(False, None, "Rights error: not permited!")
@@ -82,14 +83,14 @@ class CSVTableController(AbstractTableController):
         return OperationResult(True)
                 
         
-    def removeRowAction(self, rowIndex):
+    def removeRow(self, rowIndex):
         """
-        
+            Reimplemented from AbstractTableController
         """
         if self._user == None or not self._userRights.rowsRemovingPermited():
             return OperationResult(False, None, "Rights error: not permited!")
         try:
-            self._model.removeRowAction(rowIndex)
+            self._model.removeRow(rowIndex)
         except Exception, exception:
             return OperationResult(False, None, "Model error: " + exception.message)
         return OperationResult(True)
@@ -97,7 +98,7 @@ class CSVTableController(AbstractTableController):
     
     def searchRows(self, keyColumn, key):
         """
-        
+            Reimplemented from AbstractTableController
         """
         try:
             return OperationResult(True, self._model.search(keyColumn, key))
@@ -107,7 +108,7 @@ class CSVTableController(AbstractTableController):
     
     def modifyField(self, row, column, data):
         """
-        
+            Reimplemented from AbstractTableController
         """
         if self._user == None or not self._userRights.fieldsModifyingPermited():
             return OperationResult(False, None, "Rights error: not permited!")
@@ -120,14 +121,14 @@ class CSVTableController(AbstractTableController):
     
     def model(self):
         """
-        
+            Reimplemented from AbstractTableController
         """
         return self._model
     
     
     def save(self):
         """
-        
+            Reimplemented from AbstractTableController
         """
         self._model.save()
         return OperationResult(True)
@@ -135,11 +136,7 @@ class CSVTableController(AbstractTableController):
         
     def close(self):
         """
-        
+            Reimplemented from AbstractTableController
         """
         self._model = None
         return OperationResult(True)
-    
-    
-c = CSVTableController()
-c.start("login.txt")

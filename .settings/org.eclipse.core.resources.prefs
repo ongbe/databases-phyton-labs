@@ -1,3 +1,7 @@
-#Sat Sep 29 21:06:16 EEST 2012
+#Sun Sep 30 17:04:01 EEST 2012
 eclipse.preferences.version=1
-encoding//src/gui/LoginDialogUI.py=utf-8
+encoding//src/gui/interfaces/LoginDialogUI.py=utf-8
+encoding//src/gui/interfaces/MainWindowUI.py=utf-8
+encoding//src/gui/interfaces/ModifyFieldDialogUI.py=utf-8
+encoding//src/gui/interfaces/SearchDialogUI.py=utf-8
+encoding//src/gui/interfaces/SearchResultsDialogUI.py=utf-8

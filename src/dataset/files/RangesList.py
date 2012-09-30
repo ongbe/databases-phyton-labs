@@ -1,16 +1,19 @@
 """
-
+    A module with a class for ranges operations
 """
+
 from PyQt4 import QtCore
 
 class RangesList(QtCore.QObject):
     """
-    
+        Represents a list of ranges and determines different
+    operations with stored ranges
     """
     
     def __init__(self, * initialRange):
         """
-        
+            Default constructor.
+            'initialRange' - 2 integers that represent initial range
         """   
         QtCore.QObject.__init__(self)   
         self._rangeList = None
@@ -24,13 +27,14 @@ class RangesList(QtCore.QObject):
     
     def ranges(self):
         """
-        
+            Return a copy of ranges list, stored in the object
         """
         return list(self._rangeList)
     
     def rangeLength(self, rangeIndex):
         """
-        
+            Returns length of specified range in the list
+            'rangeIndex' - index of range
         """
         typeError = TypeError("Index must be an integer!", {"raiseObject": self, "index": rangeIndex})
         try:
@@ -44,6 +48,9 @@ class RangesList(QtCore.QObject):
     
     
     def totalRangesLength(self):
+        """
+            Returns total length of all ranges stored in the list
+        """
         total = 0
         for item in self._rangeList:
             total += item[1] - item[0]
@@ -52,21 +59,22 @@ class RangesList(QtCore.QObject):
     
     def size(self):
         """
-        
+            Returns ranges amount in the list 
         """
         return len(self._rangeList)
     
     
     def clear(self):
         """
-        
+            Clears the list. Returns None
         """
         self._rangeList = []
     
    
     def add(self, * rangeToAdd):
         """
-        
+            Adds a new range and performs union operation if needed.
+        Returns None
         """
         try:
             rangeToAdd = self._validateRange(rangeToAdd)
@@ -93,7 +101,7 @@ class RangesList(QtCore.QObject):
             
     def remove(self, * rangeToRemove):
         """
-        
+            Removes a range and performs spliting operation if needed
         """
         try:
             rangeToRemove = self._validateRange(rangeToRemove)

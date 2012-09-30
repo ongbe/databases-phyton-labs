@@ -1,5 +1,5 @@
 """
-
+    Module for changing field dialog class
 """
 
 from PyQt4 import QtCore, QtGui
@@ -7,11 +7,12 @@ from gui.interfaces.ModifyFieldDialogUI import Ui_ModifyingFieldDialog
 
 class ModifyingFieldDialog(QtGui.QDialog):
     """
-    
+        Changing field dialog class
     """
     def __init__(self, mainWindow):
         """
-        
+            Default constructor
+            'mainWindow' - MainWindow object reference
         """
         QtGui.QDialog.__init__(self, mainWindow)
         self._mainWindow = mainWindow
@@ -23,7 +24,8 @@ class ModifyingFieldDialog(QtGui.QDialog):
         
     def okButtonClicked(self):
         """
-        
+            A slot for OK button "clicked()" signal
+        Returns None
         """
         self._mainWindow.modifyCurrentField(self._ui.valueEdit.text())
         self.focusToEdit()
@@ -31,7 +33,8 @@ class ModifyingFieldDialog(QtGui.QDialog):
         
     def focusToEdit(self):
         """
-        
+            Puts edit box in focus and makes it's text selected.
+        Returns None
         """
         self._ui.valueEdit.setSelection(0, self._ui.valueEdit.text().length())
         self._ui.valueEdit.setFocus()
@@ -39,6 +42,7 @@ class ModifyingFieldDialog(QtGui.QDialog):
     
     def cancelButtonClicked(self):
         """
-        
+            A slot for CANCEL button "clicked()" signal
+        Returns None
         """
         self.hide()

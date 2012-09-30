@@ -1,5 +1,5 @@
 """
-
+    Module for searching rows dialog
 """
 
 from PyQt4 import QtCore, QtGui
@@ -7,12 +7,12 @@ from gui.interfaces.SearchDialogUI import Ui_SearchDialog
 
 class SearchDialog(QtGui.QDialog):
     """
-    
+        Searching rows dialog
     """
-    
     def __init__(self, mainWindow):
         """
-        
+            Default constructor.
+            'mainWindow' - MainWindow object reference
         """
         QtGui.QDialog.__init__(self, mainWindow)
         self._ui = Ui_SearchDialog()
@@ -23,7 +23,7 @@ class SearchDialog(QtGui.QDialog):
     
     def show(self):
         """
-        
+            Overridden from QWidget class method. Returns None
         """
         QtGui.QDialog.show(self)
         model = self._mainWindow.currentModel()
@@ -37,7 +37,8 @@ class SearchDialog(QtGui.QDialog):
             
     def okButtonClicked(self):
         """
-        
+            A slot for OK button "clicked()" signal
+        Returns None
         """
         self._mainWindow.searchFor(self._ui.keyColumnCombo.currentIndex(), self._ui.keyEdit.text())
         

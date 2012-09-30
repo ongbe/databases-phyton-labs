@@ -1,19 +1,20 @@
 """
-
+    Module for log-in dialog
 """
 
 from PyQt4 import QtGui, QtCore
-from LoginDialogUI import Ui_loginDialog
+from gui.interfaces.LoginDialogUI import Ui_loginDialog
 from users.UsersList import UsersList
 from users.User import User
 
 class LoginDialog(QtGui.QDialog):
     """
-    
+        Log-in dialog class
     """
     def __init__(self, loginsFilePath):
         """
-        
+            Default constructor.
+            'loginsFilePath' - path to the file with users data
         """
         QtGui.QDialog.__init__(self)
         self._ui = Ui_loginDialog()
@@ -26,7 +27,7 @@ class LoginDialog(QtGui.QDialog):
     
     def okButtonClicked(self):
         """
-        
+            A slot for OK button "clicked()" signal
         """
         login = self._ui.loginEdit.text()
         password = self._ui.passwordEdit.text()
@@ -40,7 +41,7 @@ class LoginDialog(QtGui.QDialog):
     
     def cancelButtonClicked(self):
         """
-        
+            A slot for CANCEL button "clicked()" signal
         """
         self.hide()
         self.emit(QtCore.SIGNAL("userLoggedIn(QObject)"), User("", ""))

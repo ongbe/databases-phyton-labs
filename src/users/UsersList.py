@@ -1,5 +1,5 @@
 """
-
+    Module for users list storing class 
 """
 from dataset.files.AutoResizeableFile import AutoResizeableFile
 from users.UserRights import UserRights
@@ -9,11 +9,18 @@ from PyQt4 import QtCore
 
 class UsersList(QtCore.QObject):
     """
-    
+        Users list storing class 
     """
     def __init__(self, filePath):
         """
-        
+            Default constructor.
+            'filePath' - path to the file with users authentification data
+            File format:
+        <login1>-<password1>: [add][,remove][,modify]
+        <login2>-<password2>: [add][,remove][,modify]
+            ................................
+        <loginN>-<passwordN>: [add][,remove][,modify]
+            Empty passwords are valid, empty logins - invalid
         """
         QtCore.QObject.__init__(self)
         try:
@@ -51,7 +58,9 @@ class UsersList(QtCore.QObject):
             
     def get(self, login):
         """
-        
+            Returns User object reference with specified login
+        or None if such user was not found.
+            'login' - user login
         """
         for user in self._users:
             if user.login() == login:

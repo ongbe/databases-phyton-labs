@@ -1,16 +1,19 @@
 """
-
+    Engine module, that contains a class for all needed *.CSV file operations performing
+    (indexing included) 
 """
+
 from dataset.files.FilePackingListener import FilePackingListener
 from dataset.files.AutoResizeableFile import AutoResizeableFile
 
 class CSVFileEngine(FilePackingListener):
     """
-    
+        *.CSV files engine class
     """
     def __init__(self, resizeableFile):
         """
-        
+            Default constructor.
+            'resizeableFile' - reference to AutoResizeableFile object with needed *.CSV
         """
         FilePackingListener.__init__(self)
         self._file = resizeableFile
@@ -35,9 +38,16 @@ class CSVFileEngine(FilePackingListener):
         self._file.setPosition(oldPosition)
         
         
+    def flush(self):
+        """
+            Flushes all changes to disk
+        """
+        self._file.flush()
+        
+        
     def filePackedEvent(self, packingInfoList):
         """
-        
+            Reimplemented from FilePackingListener class
         """
         oldPosition = self._fieldsIndexingFile.position()
         self._fieldsIndexingFile.pack()
@@ -54,28 +64,30 @@ class CSVFileEngine(FilePackingListener):
     
     def rowCount(self):
         """
-        
+            Returns amount of rows in the table
         """
         return self._rowsCount
     
     
     def columnCount(self):
         """
-        
+            Returns amount of rows in the table
         """
         return self._columnsCount
     
     
     def titles(self):
         """
-        
+            Returns a list of columns titles
         """
         return self._titles
     
                   
     def rowData(self, row):
         """
-        
+            Returns a tuple representing each field in the specified row.
+        The first element of tuple is row index (zero-based)
+            'row' - zero-based row index
         """
         row = self._validateRow(row)
         fieldsRanges = self._getRowFieldsRanges(row)
@@ -85,7 +97,9 @@ class CSVFileEngine(FilePackingListener):
     
     def fieldData(self, row, column):
         """
-        
+            Returns a string representation of the specified field.
+            'row' - zero-based row index
+            'column' - zero-based column index
         """
         row = self._validateRow(row)
         column = self._validateColumn(column)
@@ -95,7 +109,10 @@ class CSVFileEngine(FilePackingListener):
     
     def changeFieldData(self, row, column, data):
         """
-        
+            Changes specified field data. Returns None
+            'row' - zero-based row index
+            'column' - zero-based column index
+            'data' - string-convertable object
         """
         row = self._validateRow(row)
         column = self._validateColumn(column)
@@ -114,7 +131,8 @@ class CSVFileEngine(FilePackingListener):
         
     def insertRow(self, rowIndex, rowData):
         """
-        
+            Inserts a new row in the specified position. Returns None.
+            'rowIndex' - zero-based row index. New row will have this index
         """
         rowIndex = self._validateRow(rowIndex, self._rowsCount + 1)
         try:
@@ -151,7 +169,8 @@ class CSVFileEngine(FilePackingListener):
         
     def removeRow(self, row): 
         """
-        
+            Removes row in the specified position. Returns None.
+            'rowIndex' - zero-based removing row index
         """
         row = self._validateRow(row)
         for i in xrange(0, self._columnsCount):
@@ -170,7 +189,10 @@ class CSVFileEngine(FilePackingListener):
         
     def searchRows(self, keyColumn, key):
         """
-        
+            Searches rows that have the same string value in 'keyColumn' as 'key'.
+        Returns a CSVFileEngine object, representing search results.
+            'keyColumn' - zero-based column index
+            'key' - string-convertable object to search
         """
         keyColumn = self._validateColumn(keyColumn)
         orderFile = self._createOrderFileIfNeeded(keyColumn)
@@ -183,10 +205,29 @@ class CSVFileEngine(FilePackingListener):
                 result.append(rowData)
             else:
                 break
-        return result
+        temporaryFile = AutoResizeableFile()
+        string = ""
+        for i in xrange(0, self._columnsCount):
+            string += self._titles[i]
+            if i != self._columnsCount - 1:
+                string += ";"
+        temporaryFile.writeLine(string)
+        result.sort(lambda x, y: x[0] - y[0])
+        for item in result:
+            string = ""
+            for i in xrange(1, len(item)):
+                string += item[i]
+                if i != len(item) - 1:
+                    string += ";"
+            temporaryFile.writeLine(string)
+        return CSVFileEngine(temporaryFile)
     
     
     def fieldsIndexes(self):
+        """
+            Method was added for debugging.
+        Returns a list of tuples of fields indexes in the real file. 
+        """
         result = []
         self._fieldsIndexingFile.pack()
         self._fieldsIndexingFile.setPosition(0)
@@ -265,6 +306,7 @@ class CSVFileEngine(FilePackingListener):
                 right = middle
             else:
                 left = middle + 1
+        print data, left, right
         return orderFile.realPositionFor(right * 4)
 
     

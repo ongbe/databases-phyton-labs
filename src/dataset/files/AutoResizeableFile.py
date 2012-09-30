@@ -1,5 +1,5 @@
-""""
-
+"""
+    Containes a class representing the auto-resizeable files
 """
 
 import os
@@ -9,14 +9,18 @@ from dataset.files.RangesList import RangesList
 from dataset.files.FilePackingListener import FilePackingListener
 from dataset.files.RangeShiftingInfo import RangeShiftingInfo
 
-"""
 
-"""
 class AutoResizeableFile(QtCore.QObject):
     """
-    
+        Class representing the auto-resizeable files
     """
     def __init__(self, filePath = None):
+        """
+            Default constructor. Opens specified file for reading and writing.
+            'filePath' - path to the file. If file doesn't exist, new file created.
+        If 'filePath' has None value, a temporary file created, which would be 
+        removed after it's closing.
+        """
         QtCore.QObject.__init__(self)
         self._isTemporary = False;
         if filePath == None:
@@ -32,14 +36,16 @@ class AutoResizeableFile(QtCore.QObject):
         
     def __del__(self):
         """
-        
+            Default finalizing method (destructor).
+        Packs, saves all changes and closes the file
         """
         self.close()
                
                   
     def close(self):
         """
-        
+            Packs, saves all changes and closes the file.
+        Returns None.
         """
         if self._file.isOpen():
             self.flush()
@@ -50,48 +56,50 @@ class AutoResizeableFile(QtCore.QObject):
                 
     def path(self):
         """
-        
+            Returns file path
         """
         return self._file.fileName()
                         
                           
     def position(self):
         """
-        
+            Returns current file position
         """
         return self._file.pos()
     
     
     def size(self):
         """
-        
+            Returns real physical size of the file. 
         """
         return self._file.size()
     
     def validRanges(self):
         """
-        
+            Returns a list (each item - a 2-integer tuple) of valid file sections.
+        Valid section is a one, which wasn't removed previously
         """
         return self._validRanges.ranges()
     
     
     def isOpened(self):
         """
-        
+            Returns True if file is opened, False otherwise
         """
         return self._file.isOpen()
     
     
     def endOfFile(self):
         """
-        
+            Returns True if current file position points to the end of physical file.
         """
         return self.position() >= self.size()
     
     
     def setPosition(self, position):
         """
-        
+            Sets new file position. Returns real value of position. 
+            'position' - new file position (integer)
         """
         position = self._validateInteger(position)
         if not self._file.seek(position):
@@ -102,7 +110,7 @@ class AutoResizeableFile(QtCore.QObject):
     
     def erase(self):
         """
-        
+            Erases all file content. Returns None
         """
         self._file.resize(0)
         self.setPosition(0)
@@ -111,7 +119,10 @@ class AutoResizeableFile(QtCore.QObject):
     
     def addPackingListener(self, listener):
         """
-        
+            Adds a new file packing event listener. This event happens
+        when all previously removed file sections are removed physically
+        from the disk. Returns None
+            'listener' - a FilePackingListener object reference
         """
         if not isinstance(listener, FilePackingListener):
             raise TypeError("Listener must has a 'FilePackingListener' type!",
@@ -121,7 +132,8 @@ class AutoResizeableFile(QtCore.QObject):
         
     def removePackingListener(self, listener):
         """
-        
+            Removes listener added via 'addPackingListener' method.
+            'listener' - a FilePackingListener object reference
         """
         if not isinstance(listener, FilePackingListener):
             raise TypeError("Listener must has a 'FilePackingListener' type!",
@@ -133,7 +145,10 @@ class AutoResizeableFile(QtCore.QObject):
         
     def realPositionFor(self, validPosition):
         """
-        
+            Translates any file position to real position in the physical
+        file. This values may be different if any sections were removed 
+        previously 
+            'validPosition' - position to translate (integer)
         """
         ranges = self._validRanges.ranges()
         lastRangeIndex, currentSum = 0, 0
@@ -158,7 +173,7 @@ class AutoResizeableFile(QtCore.QObject):
         
     def readLine(self):
         """
-        
+            Reads and returns a line.
         """
         data = str(self._file.readLine())
         return data.strip()
@@ -166,19 +181,20 @@ class AutoResizeableFile(QtCore.QObject):
     
     def read(self, size = -1):
         """
-        
+            Reads and returns a string with specified length
+            'size' - needed length of string. If 'size' has -1 value,
+        the whole file up to the end would be read
         """
         size = self._validateInteger(size)
         if size == -1:
-            size = self._file.size() - self.position()
-        oldPosition = self.position()   
+            size = self._file.size() - self.position()   
         data = str(self._file.read(size))
         return data
     
     
     def readAll(self):
         """
-        
+            Reads and returns the whole file content, saves old filed position
         """
         oldPosition = self.position()
         self.setPosition(0)
@@ -189,7 +205,8 @@ class AutoResizeableFile(QtCore.QObject):
     
     def readInteger(self):
         """
-        
+            Reads next 4 bytes from the file and converts them to integer value,
+        that would be returned 
         """
         oldPosition = self.position()
         string = self.read(4)
@@ -202,7 +219,8 @@ class AutoResizeableFile(QtCore.QObject):
     
     def write(self, string, eraseFirstSymbols = 0):
         """
-        
+            Writes data represented by 'string', previously removed
+        'eraseFirstSymbols' bytes. Returns really written bytes amount
         """
         eraseFirstSymbols = self._validateInteger(eraseFirstSymbols)
         string = str(string)
@@ -224,7 +242,8 @@ class AutoResizeableFile(QtCore.QObject):
         
     def writeLine(self, string, eraseFirstSymbols = 0):
         """
-        
+            Writes a line represented by 'string', previously removed
+        'eraseFirstSymbols' bytes. Returns really written bytes amount
         """
         string = str(string) + '\n'
         return self.write(string, eraseFirstSymbols)
@@ -232,7 +251,8 @@ class AutoResizeableFile(QtCore.QObject):
     
     def writeInteger(self, value, eraseOld = False):
         """
-        
+            Writes an integer represented by 'value' with erasing
+        previous value if 'eraseOld' is True. Returns really written bytes amount
         """
         value = self._validateInteger(value)
         eraseFirstSymbols = 0
@@ -243,7 +263,8 @@ class AutoResizeableFile(QtCore.QObject):
     
     def flush(self):
         """
-        
+            Flushes file to the disk with previously packing.
+        Returns None.
         """
         self.pack()
         self._file.flush()
@@ -251,7 +272,9 @@ class AutoResizeableFile(QtCore.QObject):
         
     def pack(self):
         """
-        
+            Performs packing operation, that physically removes
+        all removed previously file sections via 'removeRange' method.
+        Returns None.
         """
         if self._validRanges.size() == 0:
             self.setPosition(0)
@@ -277,7 +300,8 @@ class AutoResizeableFile(QtCore.QObject):
     
     def removeRange(self, startPosition, endPosition):
         """
-        
+            Removes file section, specified by 'startPosition' and
+        'endPosition' constrains ('endPosition' - excludly).Returns None
         """
         self._validRanges.remove(startPosition, endPosition)
         invalidSpacePercentage = (1 - (float(self._validRanges.size()) / float(self._file.size()))) * 100.0

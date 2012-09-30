@@ -1,5 +1,5 @@
 """
-
+    Module for main window
 """
 
 from PyQt4 import QtCore, QtGui
@@ -12,11 +12,12 @@ from gui.ModifyingFieldDialog import ModifyingFieldDialog
 
 class MainWindow(QtGui.QMainWindow):
     """
-    
+        Main window class
     """
     def __init__(self, controller):
         """
-        
+            Default constructor.
+            'controller' - an AbstractTableController object
         """
         if not isinstance(controller, AbstractTableController):
             raise TypeError("Controller must be an 'AbstractTableController' type", 
@@ -43,7 +44,8 @@ class MainWindow(QtGui.QMainWindow):
         
     def openFileAction(self):
         """
-        
+            Slot for File->Open item triggered() signal
+        Returns None
         """
         filePath = QtGui.QFileDialog.getOpenFileName(parent = self, caption = QtCore.QString("Open table..."),
                                           filter = QtCore.QString("CSV files (*.csv)"))
@@ -64,14 +66,16 @@ class MainWindow(QtGui.QMainWindow):
         
     def saveFileAction(self):
         """
-        
+            Slot for File->Save item triggered() signal
+        Returns None
         """
         self._controller.save()
         
         
     def closeFileAction(self):
         """
-        
+            Slot for File->Close item triggered() signal
+        Returns None
         """
         self._controller.save()
         self._controller.close()
@@ -81,14 +85,16 @@ class MainWindow(QtGui.QMainWindow):
         
     def activeTabChanged(self, index):
         """
-        
+            Slot for File->Open item triggered() signal
+        Returns None
         """
         self._selectPage(index)
         
         
     def insertNewRowAction(self):
         """
-        
+            Slot for pages QTabView object currentChanged(int) signal
+        Returns None
         """
         result = self._controller.insertRow(self._ui.tableView.currentIndex().row())
         if not result.isOk():
@@ -102,7 +108,8 @@ class MainWindow(QtGui.QMainWindow):
         
     def removeRowAction(self):
         """
-        
+            Slot for Table->Remove row item triggered() signal
+        Returns None
         """
         result = self._controller.removeRowAction(self._ui.tableView.currentIndex().row())
         if not result.isOk():
@@ -114,7 +121,8 @@ class MainWindow(QtGui.QMainWindow):
     
     def tableViewDbClickEvent(self, ARG):
         """
-        
+            Slot for QTableView object doubleClicked(const QModelIndex &) signal
+        Returns None
         """
         self._modifyingFieldDialog.show()
         self._modifyingFieldDialog.focusToEdit()
@@ -122,14 +130,18 @@ class MainWindow(QtGui.QMainWindow):
         
     def searchRowAction(self):
         """
-        
+            Slot for Table->Search for... item triggered() signal
+        Returns None
         """
         self._searchDialog.show()
         
         
     def searchFor(self, columnKey, key):
         """
-        
+            Called by SearchDialog object for searching data.
+        Returns None
+            'keyColumn' - zero-based column index
+            'key' - string-convertable object to search
         """
         result = self._controller.searchRows(columnKey, key)
         if not result.isOk():
@@ -140,7 +152,9 @@ class MainWindow(QtGui.QMainWindow):
         
     def modifyCurrentField(self, value):
         """
-        
+            Called by ModifyingFieldDialog object for changing
+        currently selected field. Returns None
+            'value' - new field value
         """
         index = self._ui.tableView.currentIndex()
         result = self._controller.modifyField(index.row(), index.column(), value)
@@ -158,7 +172,7 @@ class MainWindow(QtGui.QMainWindow):
         
     def currentModel(self):
         """
-        
+            Returns currently associated with controller model
         """
         if self._controller == None:
             return None
