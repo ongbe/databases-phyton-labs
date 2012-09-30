@@ -14,20 +14,10 @@ class CSVTableModel(QtCore.QAbstractTableModel):
     """
     def __init__ (self, filePath = None, engine = None):
         """
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> e885f969ab78f931ae1f682f2ddb49dd970f87a6
             Default constructor.
             'filePath' - path to the *.CSV file.
             'engine' - reference to CSVFileEngine object.
         Used if the 'filePath' parameter has None value, ignored otherwise
-<<<<<<< HEAD
-=======
-=======
-        
->>>>>>> 44786a20d2b05b7d3d55e44a8ac9f7365e1efaa8
->>>>>>> e885f969ab78f931ae1f682f2ddb49dd970f87a6
         """
         QtCore.QAbstractTableModel.__init__(self)
         self._engine = engine
@@ -94,12 +84,12 @@ class CSVTableModel(QtCore.QAbstractTableModel):
         return True
     
     
-    def removeRowAction(self, row, parent = QtCore.QModelIndex()):
+    def removeRow(self, row, parent = QtCore.QModelIndex()):
         """
             Reimplemented from QAbstractTableModel class
         """
         QtCore.QAbstractTableModel.beginRemoveRows(self, parent, row, row)
-        self._engine.removeRowAction(row)
+        self._engine.removeRow(row)
         QtCore.QAbstractTableModel.endRemoveRows(self)
         return True
     
@@ -110,7 +100,7 @@ class CSVTableModel(QtCore.QAbstractTableModel):
         """
         
         for i in xrange(row, row + count):
-            self.removeRowAction(row)
+            self.removeRow(row)
         return True
         
         
@@ -141,15 +131,7 @@ class CSVTableModel(QtCore.QAbstractTableModel):
     
     def save(self):
         """
-<<<<<<< HEAD
             Saves all changes made on the disk.
-=======
-<<<<<<< HEAD
-            Saves all changes made on the disk.
-=======
-        
->>>>>>> 44786a20d2b05b7d3d55e44a8ac9f7365e1efaa8
->>>>>>> e885f969ab78f931ae1f682f2ddb49dd970f87a6
         """
         self._engine.flush()
             

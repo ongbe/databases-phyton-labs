@@ -111,7 +111,7 @@ class MainWindow(QtGui.QMainWindow):
             Slot for Table->Remove row item triggered() signal
         Returns None
         """
-        result = self._controller.removeRowAction(self._ui.tableView.currentIndex().row())
+        result = self._controller.removeRow(self._ui.tableView.currentIndex().row())
         if not result.isOk():
             QtGui.QMessageBox.about(self, "Error...", result.message())
             return
